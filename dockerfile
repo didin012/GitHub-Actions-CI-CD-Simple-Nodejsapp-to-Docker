@@ -1,7 +1,11 @@
-FROM node:14
+FROM node:latest
+
 WORKDIR /usr/src/app
-COPY ./nodejsapp/package*.json /usr/src/app/
+
+COPY package.json ./
+
 RUN npm install
-COPY ./nodejsapp/ /usr/src/app/
+
+COPY . .
 EXPOSE 4000
-CMD [ "node", "app.js" ]
+CMD [ "node", "index.js" ]
